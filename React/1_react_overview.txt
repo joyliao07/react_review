@@ -1,0 +1,28 @@
+                                React - Overview
+
+
+“A JavaScript Library for building UI”
+
+
+They don’t run on the server; they run in the browser. We don’t have to wait for the server to respond to get a new page.
+
+
+Reusable components
+
+
+Add libraries:
+React: https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.min.js 
+React DOM: https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.min.js 
+
+    JS Preprocessor:
+	    Babel - Babel let us use HTML5 syntax in JS.
+
+
+Single Page Applications:
+    - Only 1 HTML page; content is (re)rendered
+    - Typically only 1 ReactDOM.render() call
+	
+Multi Page Applications:
+    - Multiple HTML page; content is (re)rendered on server
+    - One ReactDOM.render() call per "widget"
+

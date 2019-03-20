@@ -1,0 +1,19 @@
+                                Tools & Packages
+
+
+- Use Dependency Management Tool: npm or yarn
+- Use Bundler: Webpack
+- Use Compiler (next-gen JS): Babel + Presets
+- Use a Development Server 
+
+
+To Create New App:
+    <create-react-app (app-name)>
+
+Common Command Lines:
+    <npm start>
+    <npm run build>
+    <npm test>
+
+To Start:
+    <npm start>
