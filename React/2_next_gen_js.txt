@@ -1,0 +1,127 @@
+                                JS - Import & Export
+
+
+defaul export:
+    [person.js]
+    const person = {
+        name: 'Joyce'
+    }
+
+    export default person
+
+import:
+    [app.js]
+    import person from './person.js'
+                    or
+    import prs from './person.js'
+
+
+named export:
+    [person.js]
+    const person = {
+        name: 'Joyce'
+    }
+
+    export person
+
+import:
+    [app.js]
+    import {person} from './person.js'
+                    or
+    import {person as prs} from './person.js'
+                    or
+    import * as bundled from './person.js'
+
+
+                                JS - Class
+
+
+class Human {
+    constructor () {
+        this.gender = 'female';
+    }
+    printGender () {
+        console.log(this.gender);
+    }
+}
+
+class Person extends Human {
+    constructor () {
+        super();
+        this.name = 'Joyce';
+        this.gender = 'male';
+    }
+    printMyName() {
+        console.log(this.name);
+    }
+}
+
+const person = new Person();
+person.printMyName();
+# 'Joyce'
+person.printGender();
+# 'male'
+
+
+                                ES6/Babel - Class
+
+
+class Human {
+
+    gender = 'female';
+
+    printGender = () => {
+        console.log(this.gender);
+    }
+}
+
+class Person extends Human {
+    
+    name = 'Joyce';
+
+    printMyName = () => {
+        console.log(this.name);
+    }
+}
+
+const person = new Person();
+person.printMyName();
+# 'Joyce'
+person.printGender();
+# 'female'
+
+
+                                Spread & Rest Operators
+
+
+
+Spread: 
+    var num = [1, 2, 3];
+    var next = [...num, 4];
+    console.log(next);
+    # [1, 2, 3, 4]
+
+
+    var num = [1, 2, 3];
+    var next = [num, 4];
+    console.log(next);
+    # [[1, 2, 3], 4]
+
+
+Rest:
+    const filter = (...args) => {
+    return args.filter(elem => elem ===1);
+    }
+
+    console.log(filter(1, 2, 1, 3));
+    # [1, 1]
+
+
+                                Array Destructuring
+
+
+const nums = [1, 2, 3];
+[num1, , num3] = nums;
+console.log(num1, num3);
+# 1, 3
+
