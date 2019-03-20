@@ -31,8 +31,11 @@ React.createElement():
         2. An JS object as the configuration, and
         3. Any number of children
 
+"state" from extends Component:
+    <state> is a special JS object managed from inside the Component class (while <props> are hard-coded variables passed from the outside).  
 
-
+"this.setState" from extends Component:
+    <this.setState> is a special JS method managed from inside the Component class. It allows you to change the state, such as when a onClick function is called.  
 
 
 
