@@ -35,7 +35,21 @@ React.createElement():
     <state> is a special JS object managed from inside the Component class (while <props> are hard-coded variables passed from the outside).  
 
 "this.setState" from extends Component:
-    <this.setState> is a special JS method managed from inside the Component class. It allows you to change the state, such as when a onClick function is called.  
+    <this.setState> is a special JS method managed from inside the Component class. It allows you to change the state, such as when a onClick function is called. <this.setState> will merge the new components to the old ones.
+
+"useState" from React:
+    <useState> returns a variable of two componenets: 1) the object themselves, and 2) the method to reset the object.
+
+    Different from <this.setState> , when you reset the properties with <useState>, the new properties will replace the old properties. They do not merge.
+
+    Secondly, you can call <useState> method as many times as you want, while <this.setState> can be called only once in the class.
+
+Stateful vs Stateless:
+    A stateful component is one that uses the "state", no matter it uses the state hook or the class-based approach of the state property. They are called "smart" or "container" components.
+
+    A file such as <person.js> is a stateless component because it has no internal state management. As a result, they are called "dumb" or "presentational components". It is the preferred way of building components.
+
+
 
 
 
