@@ -1,0 +1,41 @@
+                                Tools & Packages
+
+
+- Use Dependency Management Tool: npm or yarn
+- Use Bundler: Webpack
+- Use Compiler (next-gen JS): Babel + Presets
+- Use a Development Server 
+
+
+To Create New App:
+    <create-react-app (app-name)>
+
+Common Command Lines:
+    <npm start>
+    <npm run build>
+    <npm test>
+
+To Start:
+    <npm start>
+
+Public Folder - index.html:
+    This will be the only html file in the web app. If you're making a multi-page web app,
+    you will simply run <create-react-app (app-name)> to add pages; you will never manually add another html file.
+
+Src Folder - App.js:
+    This is where you nest all the sub-components to the app.
+
+React.createElement():
+    It takes three arguments:
+        1. The element you will render to the DOM,
+        2. An JS object as the configuration, and
+        3. Any number of children
+
+"state" from extends Component:
+    <state> is a special JS object managed from inside the Component class (while <props> are hard-coded variables passed from the outside).  
+
+"this.setState" from extends Component:
+    <this.setState> is a special JS method managed from inside the Component class. It allows you to change the state, such as when a onClick function is called.  
+
+
+
