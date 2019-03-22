@@ -7,9 +7,10 @@ class App extends Component {
 // const app = props => {
   state = {
     persons: [
-      {name: 'Joyce', hobby: 'code'},
-      {name: 'Huckle', hobby: 'sleep'},
-    ]
+      {id: '1', name: 'Joyce', hobby: 'code'},
+      {id: '2', name: 'Huckle', hobby: 'sleep'},
+    ],
+    showPersons: false,
   }
   // const [personState, setPersonState] = useState({
   //   persons: [
@@ -18,13 +19,16 @@ class App extends Component {
   //   ]
   //   });
 
-  changeNameHandler = (event) => {
+  changeNameHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex( p => {
+      return p.id === id;
+    });
+
+    const persons = [...this.state.persons];
+    persons[personIndex].name = event.target.value;
+
     this.setState({
-      persons: [
-        {name: event.target.value, hobby: 'code'},
-        {name: 'Huckle', hobby: 'sleep'}
-      ],
-      showPersons: false,
+      persons: persons
     })
   } 
 
@@ -35,7 +39,8 @@ class App extends Component {
   }
   
   deletePersonHandler = (personIndex) => {
-    const persons = this.state.persons;
+    // const persons = this.state.persons;
+    const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
     this.setState({
       persons: persons
@@ -62,8 +67,10 @@ class App extends Component {
             <Person 
               name={person.name} 
               hobby={person.hobby}
+              // changed={(event) => this.changeNameHandler(event, person.id)}
+              changed={(event) => this.changeNameHandler(event, person.id)}
               click={this.deletePersonHandler.bind(this, index)}
-              changed={this.changeNameHandler}>
+              key={person.id}>
               She also likes to dance! </Person>
           )})}
         </div>
@@ -75,7 +82,7 @@ class App extends Component {
         <h1>React app testing</h1>
         <button 
           onClick={() => this.togglePersonHandler()}
-          style={style}>Change</button>
+          style={style}>Show/Hide</button>
 
         {persons}
       </div>
