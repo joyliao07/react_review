@@ -7,9 +7,10 @@ class App extends Component {
 // const app = props => {
   state = {
     persons: [
-      {name: 'Joyce', hobby: 'code'},
-      {name: 'Huckle', hobby: 'sleep'},
-    ]
+      {id: '1', name: 'Joyce', hobby: 'code'},
+      {id: '2', name: 'Huckle', hobby: 'sleep'},
+    ],
+    showPersons: false,
   }
   // const [personState, setPersonState] = useState({
   //   persons: [
@@ -18,22 +19,16 @@ class App extends Component {
   //   ]
   //   });
 
-  changeHobbyHandler = (newHobby) => {
-    this.setState({
-      persons: [
-        {name: 'Joycy', hobby: newHobby},
-        {name: 'Huckleberry', hobby: 'dream'},
-      ]
-    })
-  }
+  changeNameHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex( p => {
+      return p.id === id;
+    });
 
-  changeNameHandler = (event) => {
+    const persons = [...this.state.persons];
+    persons[personIndex].name = event.target.value;
+
     this.setState({
-      persons: [
-        {name: event.target.value, hobby: 'code'},
-        {name: 'Huckle', hobby: 'sleep'}
-      ],
-      showPersons: false,
+      persons: persons
     })
   } 
 
@@ -43,6 +38,15 @@ class App extends Component {
     })
   }
   
+  deletePersonHandler = (personIndex) => {
+    // const persons = this.state.persons;
+    const persons = [...this.state.persons];
+    persons.splice(personIndex, 1);
+    this.setState({
+      persons: persons
+    });
+  }
+
   render() {
 
     // styling for the button
@@ -58,16 +62,17 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-          <Person 
-            name={this.state.persons[0].name} 
-            hobby={this.state.persons[0].hobby}
-            click={this.changeHobbyHandler.bind(this, "write")}
-            changed={this.changeNameHandler}>
-            She also likes to dance! </Person>
-          <Person 
-            name={this.state.persons[1].name} 
-            hobby={this.state.persons[1].hobby}>
-            She also likes opera! </Person>
+          {this.state.persons.map( (person, index) => {
+            return(
+            <Person 
+              name={person.name} 
+              hobby={person.hobby}
+              // changed={(event) => this.changeNameHandler(event, person.id)}
+              changed={(event) => this.changeNameHandler(event, person.id)}
+              click={this.deletePersonHandler.bind(this, index)}
+              key={person.id}>
+              She also likes to dance! </Person>
+          )})}
         </div>
       );
     }
@@ -77,7 +82,7 @@ class App extends Component {
         <h1>React app testing</h1>
         <button 
           onClick={() => this.togglePersonHandler()}
-          style={style}>Change</button>
+          style={style}>Show/Hide</button>
 
         {persons}
       </div>
