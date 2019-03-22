@@ -18,27 +18,39 @@ class App extends Component {
   //   ]
   //   });
 
-  changeHobbyHandler = () => {
+  changeHobbyHandler = (newHobby) => {
     this.setState({
       persons: [
-        {name: 'Joycy', hobby: 'eat'},
+        {name: 'Joycy', hobby: newHobby},
         {name: 'Huckleberry', hobby: 'dream'},
       ]
     })
   }
 
+  changeNameHandler = (event) => {
+    this.setState({
+      persons: [
+        {name: event.target.value, hobby: 'code'},
+        {name: 'Huckle', hobby: 'sleep'}
+      ]
+    })
+  } 
+
   render() {
     return (
       <div className="App">
         <h1>React app testing</h1>
-        <button onClick={this.changeHobbyHandler}>Change</button>
+        <button onClick={() => this.changeHobbyHandler('cook')}>Change</button>
         <Person 
-        name={this.state.persons[0].name} 
-        hobby={this.state.persons[0].hobby}
-        click={this.changeHobbyHandler}> She also likes to dance! </Person>
+          name={this.state.persons[0].name} 
+          hobby={this.state.persons[0].hobby}
+          click={this.changeHobbyHandler.bind(this, "write")}
+          changed={this.changeNameHandler}>
+          She also likes to dance! </Person>
         <Person 
-        name={this.state.persons[1].name} 
-        hobby={this.state.persons[1].hobby}> She also likes opera! </Person>
+          name={this.state.persons[1].name} 
+          hobby={this.state.persons[1].hobby}>
+          She also likes opera! </Person>
       </div>
     );
     // return React.createElement('div', {className: 'app'}, React.createElement('h1', null, 'I\'m using an alternative render method.'), React.createElement('p', null, 'second element here.'));
