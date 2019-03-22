@@ -18,15 +18,6 @@ class App extends Component {
   //   ]
   //   });
 
-  changeHobbyHandler = (newHobby) => {
-    this.setState({
-      persons: [
-        {name: 'Joycy', hobby: newHobby},
-        {name: 'Huckleberry', hobby: 'dream'},
-      ]
-    })
-  }
-
   changeNameHandler = (event) => {
     this.setState({
       persons: [
@@ -43,6 +34,14 @@ class App extends Component {
     })
   }
   
+  deletePersonHandler = (personIndex) => {
+    const persons = this.state.persons;
+    persons.splice(personIndex, 1);
+    this.setState({
+      persons: persons
+    });
+  }
+
   render() {
 
     // styling for the button
@@ -58,25 +57,15 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-          {this.state.persons.map( person => {
+          {this.state.persons.map( (person, index) => {
             return(
             <Person 
               name={person.name} 
               hobby={person.hobby}
-              click={this.changeHobbyHandler.bind(this, "write")}
+              click={this.deletePersonHandler.bind(this, index)}
               changed={this.changeNameHandler}>
               She also likes to dance! </Person>
           )})}
-          {/* <Person 
-            name={this.state.persons[0].name} 
-            hobby={this.state.persons[0].hobby}
-            click={this.changeHobbyHandler.bind(this, "write")}
-            changed={this.changeNameHandler}>
-            She also likes to dance! </Person>
-          <Person 
-            name={this.state.persons[1].name} 
-            hobby={this.state.persons[1].hobby}>
-            She also likes opera! </Person> */}
         </div>
       );
     }
