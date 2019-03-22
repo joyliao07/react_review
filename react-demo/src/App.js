@@ -53,27 +53,33 @@ class App extends Component {
       cursor: 'pointer',
     };
 
+    let persons = null;
+
+    if (this.state.showPersons) {
+      persons = (
+        <div>
+          <Person 
+            name={this.state.persons[0].name} 
+            hobby={this.state.persons[0].hobby}
+            click={this.changeHobbyHandler.bind(this, "write")}
+            changed={this.changeNameHandler}>
+            She also likes to dance! </Person>
+          <Person 
+            name={this.state.persons[1].name} 
+            hobby={this.state.persons[1].hobby}>
+            She also likes opera! </Person>
+        </div>
+      );
+    }
+
     return (
       <div className="App">
         <h1>React app testing</h1>
         <button 
           onClick={() => this.togglePersonHandler()}
           style={style}>Change</button>
-        { 
-          this.state.showPersons ?
-            <div>
-              <Person 
-                name={this.state.persons[0].name} 
-                hobby={this.state.persons[0].hobby}
-                click={this.changeHobbyHandler.bind(this, "write")}
-                changed={this.changeNameHandler}>
-                She also likes to dance! </Person>
-              <Person 
-                name={this.state.persons[1].name} 
-                hobby={this.state.persons[1].hobby}>
-                She also likes opera! </Person>
-            </div> : null
-        }
+
+        {persons}
       </div>
     );
     // return React.createElement('div', {className: 'app'}, React.createElement('h1', null, 'I\'m using an alternative render method.'), React.createElement('p', null, 'second element here.'));
