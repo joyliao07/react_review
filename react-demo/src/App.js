@@ -35,12 +35,21 @@ class App extends Component {
       ]
     })
   } 
-
+  
   render() {
+    const style = {
+      backgroundColor: 'white',
+      border: '2px solid pink',
+      padding: '8px 15px',
+      cursor: 'pointer',
+    };
+
     return (
       <div className="App">
         <h1>React app testing</h1>
-        <button onClick={() => this.changeHobbyHandler('cook')}>Change</button>
+        <button 
+          onClick={() => this.changeHobbyHandler('cook')}
+          style={style}>Change</button>
         <Person 
           name={this.state.persons[0].name} 
           hobby={this.state.persons[0].hobby}
