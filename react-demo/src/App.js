@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import React, { useState} from 'react';
 import './App.css';
 import Person from './Person/Person';
+import { PassThrough } from 'stream';
 
 class App extends Component {
 // const app = props => {
@@ -33,6 +34,7 @@ class App extends Component {
   } 
 
   togglePersonHandler = () => {
+    // console.log('showPersons: ', this.state.showPersons);
     this.setState({
       showPersons: !this.state.showPersons,
     })
@@ -50,7 +52,7 @@ class App extends Component {
   render() {
 
     // styling for the button
-    const style = {
+    let style = {
       backgroundColor: 'white',
       border: '2px solid pink',
       padding: '8px 15px',
@@ -58,13 +60,30 @@ class App extends Component {
     };
 
     let persons = null;
-
+    
+    if (this.state.showPersons) {
+      style = {
+        backgroundColor: 'red',
+        color: 'white',
+        border: '2px solid pink',
+        padding: '8px 15px',
+        cursor: 'pointer',
+      }} else {
+        style = {
+          backgroundColor: 'green',
+          color: 'white',
+          border: '2px solid pink',
+          padding: '8px 15px',
+          cursor: 'pointer',
+      }
+    }
+    
     if (this.state.showPersons) {
       persons = (
         <div>
           {this.state.persons.map( (person, index) => {
             return(
-            <Person 
+              <Person 
               name={person.name} 
               hobby={person.hobby}
               // changed={(event) => this.changeNameHandler(event, person.id)}
@@ -77,9 +96,19 @@ class App extends Component {
       );
     }
 
+    let classes = [];
+
+    if (this.state.persons.length <= 1) {
+      classes.push('red');
+    }
+    if (this.state.persons.length === 0) {
+      classes.push('bold');
+    }
+
+
     return (
       <div className="App">
-        <h1>React app testing</h1>
+        <h1 className={classes.join(' ')}>React app testing</h1>
         <button 
           onClick={() => this.togglePersonHandler()}
           style={style}>Show/Hide</button>
