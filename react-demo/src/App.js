@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
 import { PassThrough } from 'stream';
-import Radium, {StyleRoot} from 'radium';
 
 class App extends Component {
 // const app = props => {
@@ -58,10 +57,10 @@ class App extends Component {
       border: '2px solid pink',
       padding: '8px 15px',
       cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'pink',
-        color: 'black',
-      }
+      // ':hover': {
+      //   backgroundColor: 'pink',
+      //   color: 'black',
+      // }
     };
     
     let persons = null;
@@ -84,10 +83,11 @@ class App extends Component {
       );
       style.backgroundColor = 'green';
       style.border = 'none';
-      style[':hover'] = {
-        backgroundColor: 'lightgreen',
-        color: 'black',
-      }}
+      // style[':hover'] = {
+      //   backgroundColor: 'lightgreen',
+      //   color: 'black',
+      // }
+    }
 
     let classes = [];
 
@@ -98,9 +98,7 @@ class App extends Component {
       classes.push('bold');
     }
 
-
     return (
-      <StyleRoot>
       <div className="App">
         <h1 className={classes.join(' ')}>React app testing</h1>
         <button 
@@ -109,10 +107,9 @@ class App extends Component {
 
         {persons}
       </div>
-      </StyleRoot>
     );
     // return React.createElement('div', {className: 'app'}, React.createElement('h1', null, 'I\'m using an alternative render method.'), React.createElement('p', null, 'second element here.'));
   }
 }
 
-export default Radium(App);
+export default App;
