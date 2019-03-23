@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
 import { PassThrough } from 'stream';
+import Radium from 'radium';
 
 class App extends Component {
 // const app = props => {
@@ -57,26 +58,13 @@ class App extends Component {
       border: '2px solid pink',
       padding: '8px 15px',
       cursor: 'pointer',
-    };
-
-    let persons = null;
-    
-    if (this.state.showPersons) {
-      style = {
-        backgroundColor: 'red',
-        color: 'white',
-        border: '2px solid pink',
-        padding: '8px 15px',
-        cursor: 'pointer',
-      }} else {
-        style = {
-          backgroundColor: 'green',
-          color: 'white',
-          border: '2px solid pink',
-          padding: '8px 15px',
-          cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'pink',
+        color: 'black',
       }
-    }
+    };
+    
+    let persons = null;
     
     if (this.state.showPersons) {
       persons = (
@@ -94,7 +82,12 @@ class App extends Component {
           )})}
         </div>
       );
-    }
+      style.backgroundColor = 'green';
+      style.border = 'none';
+      style[':hover'] = {
+        backgroundColor: 'lightgreen',
+        color: 'black',
+      }}
 
     let classes = [];
 
@@ -120,4 +113,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Radium(App);
