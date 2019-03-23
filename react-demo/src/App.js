@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
 import { PassThrough } from 'stream';
-import Radium from 'radium';
+import Radium, {StyleRoot} from 'radium';
 
 class App extends Component {
 // const app = props => {
@@ -100,6 +100,7 @@ class App extends Component {
 
 
     return (
+      <StyleRoot>
       <div className="App">
         <h1 className={classes.join(' ')}>React app testing</h1>
         <button 
@@ -108,6 +109,7 @@ class App extends Component {
 
         {persons}
       </div>
+      </StyleRoot>
     );
     // return React.createElement('div', {className: 'app'}, React.createElement('h1', null, 'I\'m using an alternative render method.'), React.createElement('p', null, 'second element here.'));
   }
