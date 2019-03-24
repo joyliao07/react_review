@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import AppCss from './App.css';
 import Person from './Person/Person';
 import { PassThrough } from 'stream';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
 // const app = props => {
@@ -58,14 +59,15 @@ class App extends Component {
         <div>
           {this.state.persons.map( (person, index) => {
             return(
+              <ErrorBoundary key={person.id}>
               <Person 
               name={person.name} 
               hobby={person.hobby}
               // changed={(event) => this.changeNameHandler(event, person.id)}
               changed={(event) => this.changeNameHandler(event, person.id)}
-              click={this.deletePersonHandler.bind(this, index)}
-              key={person.id}>
+              click={this.deletePersonHandler.bind(this, index)}>
               She also likes to dance! </Person>
+              </ErrorBoundary>
           )})}
         </div>
       );
