@@ -50,18 +50,6 @@ class App extends Component {
   }
 
   render() {
-
-    // styling for the button
-    let style = {
-      backgroundColor: 'white',
-      border: '2px solid pink',
-      padding: '8px 15px',
-      cursor: 'pointer',
-      // ':hover': {
-      //   backgroundColor: 'pink',
-      //   color: 'black',
-      // }
-    };
     
     let persons = null;
     
@@ -81,12 +69,6 @@ class App extends Component {
           )})}
         </div>
       );
-      style.backgroundColor = 'green';
-      style.border = 'none';
-      // style[':hover'] = {
-      //   backgroundColor: 'lightgreen',
-      //   color: 'black',
-      // }
     }
 
     let assignedClasses = [];
@@ -103,7 +85,7 @@ class App extends Component {
         <h1 className={assignedClasses.join(' ')}>React app testing</h1>
         <button 
           onClick={() => this.togglePersonHandler()}
-          style={style}>Show/Hide</button>
+          className={AppCss.Button}>Show/Hide</button>
 
         {persons}
       </div>

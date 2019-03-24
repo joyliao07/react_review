@@ -71,9 +71,3 @@ CSS Modules:
     In .js files, <import (name) from './App.css';>. And call the css objects as className.
 
     Run <npm start> to see updated styling.
-
-
-
-
-
-
