@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 // import React, { useState} from 'react';
-import AppCss from './App.css';
-import Person from './Person/Person';
+import AppCss from '../containers/App.css';
+import Person from '../components/Persons/Person/Person';
 import { PassThrough } from 'stream';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
 // const app = props => {

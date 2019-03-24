@@ -1,6 +1,7 @@
 import React from 'react';
 import PersonCss from "./Person.css";
-import App from '../App';
+// import App from '../App';
+import App from '../../../containers/App';
 
 
 const person = (props) => {
