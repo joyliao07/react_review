@@ -71,3 +71,16 @@ CSS Modules:
     In .js files, <import (name) from './App.css';>. And call the css objects as className.
 
     Run <npm start> to see updated styling.
+
+To Check The Current State Of React App:
+    1. Google "React developer tools"
+    2. Go to Chrome Web Store and click "Add To Chrome"
+    3. Restart Chrome
+    4. Under "Inspect", you can choose "React"
+    
+"ErrorBoundary":
+    1. Create and setup ErrorBoundary folder and file
+    2. In <App.js>, wrap the targeted component (eg, "Person") inside <ErrorBoundary>
+    3. The "Person" component is returned inside a map() function. So when wrapping <ErrorBoundary> outside <Person>, remember to move the <key={person.id}> out from "Person" and inside "ErrorBoundary".
+
+
