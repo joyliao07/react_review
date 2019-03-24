@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import React, { useState} from 'react';
-import './App.css';
+import AppCss from './App.css';
 import Person from './Person/Person';
 import { PassThrough } from 'stream';
 
@@ -89,18 +89,18 @@ class App extends Component {
       // }
     }
 
-    let classes = [];
+    let assignedClasses = [];
 
     if (this.state.persons.length <= 1) {
-      classes.push('red');
+      assignedClasses.push(AppCss.red);
     }
     if (this.state.persons.length === 0) {
-      classes.push('bold');
+      assignedClasses.push(AppCss.bold);
     }
 
     return (
-      <div className="App">
-        <h1 className={classes.join(' ')}>React app testing</h1>
+      <div className={AppCss.App}>
+        <h1 className={assignedClasses.join(' ')}>React app testing</h1>
         <button 
           onClick={() => this.togglePersonHandler()}
           style={style}>Show/Hide</button>

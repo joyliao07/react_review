@@ -1,5 +1,6 @@
 import React from 'react';
-import "./Person.css";
+import AppCss from "./Person.css";
+import App from '../App';
 
 
 const person = (props) => {
@@ -10,7 +11,7 @@ const person = (props) => {
     // }
 
     return (
-        <div className="Person">
+        <div className={AppCss.Person}>
             <p>Here is {props.name} who likes to {props.hobby}.</p>
             <p>{props.children}</p>
             <input type="text" placeholder="Type a name" onChange={props.changed}></input>

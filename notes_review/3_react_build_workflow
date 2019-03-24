@@ -64,8 +64,13 @@ CSS Modules:
 
     <git add .>
     <git commit -m "all changes need to be committed before running npm eject">
-    <npm run eject>
+    <npm run eject> When you run this commnad, it gives you access to all config files.
+    
+    Modify the setting of <test: cssRegex> in file <webpack.config.js>
 
+    In .js files, <import (name) from './App.css';>. And call the css objects as className.
+
+    Run <npm start> to see updated styling.
 
 
 
