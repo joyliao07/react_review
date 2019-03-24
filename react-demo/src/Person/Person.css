@@ -14,8 +14,8 @@ button:hover {
     border:gray 1px solid;
 }
 
-/* @media (min-width: 550px) {
+@media (min-width: 550px) {
     .Person {
         width: 550px;
     }
-} */
+}
