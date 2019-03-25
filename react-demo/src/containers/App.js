@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import React, { useState} from 'react';
 import AppCss from '../containers/App.css';
+import Persons from '../components/Persons/Persons';
 import Person from '../components/Persons/Person/Person';
 import { PassThrough } from 'stream';
 import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
@@ -57,18 +58,10 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-          {this.state.persons.map( (person, index) => {
-            return(
-              <ErrorBoundary key={person.id}>
-              <Person 
-              name={person.name} 
-              hobby={person.hobby}
-              // changed={(event) => this.changeNameHandler(event, person.id)}
-              changed={(event) => this.changeNameHandler(event, person.id)}
-              click={this.deletePersonHandler.bind(this, index)}>
-              She also likes to dance! </Person>
-              </ErrorBoundary>
-          )})}
+          <Persons
+          clicked = {this.deletePersonHandler}
+          changed = {this.changeNameHandler}
+          persons = {this.state.persons}/>
         </div>
       );
     }
