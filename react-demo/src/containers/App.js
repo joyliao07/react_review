@@ -2,19 +2,43 @@ import React, { Component } from 'react';
 // import React, { useState} from 'react';
 import AppCss from '../containers/App.css';
 import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 import Person from '../components/Persons/Person/Person';
 import { PassThrough } from 'stream';
 import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
 // const app = props => {
-  state = {
-    persons: [
-      {id: '1', name: 'Joyce', hobby: 'code'},
-      {id: '2', name: 'Huckle', hobby: 'sleep'},
-    ],
-    showPersons: false,
+
+  constructor(props){
+    super(props);
+    this.state = {
+      persons: [
+        {id: '1', name: 'Joyce', hobby: 'code'},
+        {id: '2', name: 'Huckle', hobby: 'sleep'},
+      ],
+      showPersons: false,
+    }
   }
+
+  // static getDerivedStateFromProps(props, state) {
+  //   //here you update the state
+  //   console.log('getderived', props);
+  //   return state;
+  // }
+
+  // componentDidMount(){
+
+  // }
+
+  // state = {
+  //   persons: [
+  //     {id: '1', name: 'Joyce', hobby: 'code'},
+  //     {id: '2', name: 'Huckle', hobby: 'sleep'},
+  //   ],
+  //   showPersons: false,
+  // }
+
   // const [personState, setPersonState] = useState({
   //   persons: [
   //     {name: 'Joyce', hobby: 'code'},
@@ -36,7 +60,6 @@ class App extends Component {
   } 
 
   togglePersonHandler = () => {
-    // console.log('showPersons: ', this.state.showPersons);
     this.setState({
       showPersons: !this.state.showPersons,
     })
@@ -57,31 +80,19 @@ class App extends Component {
     
     if (this.state.showPersons) {
       persons = (
-        <div>
           <Persons
           clicked = {this.deletePersonHandler}
           changed = {this.changeNameHandler}
           persons = {this.state.persons}/>
-        </div>
       );
-    }
-
-    let assignedClasses = [];
-
-    if (this.state.persons.length <= 1) {
-      assignedClasses.push(AppCss.red);
-    }
-    if (this.state.persons.length === 0) {
-      assignedClasses.push(AppCss.bold);
     }
 
     return (
       <div className={AppCss.App}>
-        <h1 className={assignedClasses.join(' ')}>React app testing</h1>
-        <button 
-          onClick={() => this.togglePersonHandler()}
-          className={AppCss.Button}>Show/Hide</button>
-
+        <Cockpit
+        persons = {this.state.persons}
+        clicked = {this.togglePersonHandler}
+        title = {this.props.appTitle}/>
         {persons}
       </div>
     );

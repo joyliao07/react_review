@@ -45,7 +45,7 @@ React.createElement():
     Secondly, you can call <useState> method as many times as you want, while <this.setState> can be called only once in the class.
 
 Stateful vs Stateless:
-    A stateful component is one that uses the "state", no matter it uses the state hook or the class-based approach of the state property. They are called "smart" or "container" components.
+    A stateful component is a class or a function that uses the "state", no matter it uses the state hook or the class-based approach of the state property. They are called "smart" or "container" components.
 
     A file such as <person.js> is a stateless component because it has no internal state management. As a result, they are called "dumb" or "presentational components". It is the preferred way of building components.
 
@@ -82,5 +82,29 @@ To Check The Current State Of React App:
     1. Create and setup ErrorBoundary folder and file
     2. In <App.js>, wrap the targeted component (eg, "Person") inside <ErrorBoundary>
     3. The "Person" component is returned inside a map() function. So when wrapping <ErrorBoundary> outside <Person>, remember to move the <key={person.id}> out from "Person" and inside "ErrorBoundary".
+
+Component Lifecycle:
+    They are only available in class-based components!
+
+    constructur(props): 
+        Call super(props)
+        Do: Change state
+        Don't: Cause side-effects (eg, make HTTP requests)
+    getDerivedStateFromProps(props, state):
+        Do: Sync state
+        Don't: Cause side-effects
+    render():
+        Do: Prepare and structure your JSX code
+        Don't:
+    componentDidMount():
+        Do: Cause side-effects
+        Don't: Change state
+    getSnapshopBeforeUpdate(prevProps, prevState):
+        Do: Last-minute DOM ops
+        Don't: Cause side-effects
+    componenetDidUpdate():
+        Do: Cause side-effects
+        Don't: Update State (triggers re-render)
+
 
 
