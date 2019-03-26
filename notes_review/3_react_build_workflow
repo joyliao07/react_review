@@ -45,7 +45,7 @@ React.createElement():
     Secondly, you can call <useState> method as many times as you want, while <this.setState> can be called only once in the class.
 
 Stateful vs Stateless:
-    A stateful component is one that uses the "state", no matter it uses the state hook or the class-based approach of the state property. They are called "smart" or "container" components.
+    A stateful component is a class or a function that uses the "state", no matter it uses the state hook or the class-based approach of the state property. They are called "smart" or "container" components.
 
     A file such as <person.js> is a stateless component because it has no internal state management. As a result, they are called "dumb" or "presentational components". It is the preferred way of building components.
 
