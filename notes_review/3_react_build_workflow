@@ -83,4 +83,28 @@ To Check The Current State Of React App:
     2. In <App.js>, wrap the targeted component (eg, "Person") inside <ErrorBoundary>
     3. The "Person" component is returned inside a map() function. So when wrapping <ErrorBoundary> outside <Person>, remember to move the <key={person.id}> out from "Person" and inside "ErrorBoundary".
 
+Component Lifecycle:
+    They are only available in class-based components!
+
+    constructur(props): 
+        Call super(props)
+        Do: Change state
+        Don't: Cause side-effects (eg, make HTTP requests)
+    getDerivedStateFromProps(props, state):
+        Do: Sync state
+        Don't: Cause side-effects
+    render():
+        Do: Prepare and structure your JSX code
+        Don't:
+    componentDidMount():
+        Do: Cause side-effects
+        Don't: Change state
+    getSnapshopBeforeUpdate(prevProps, prevState):
+        Do: Last-minute DOM ops
+        Don't: Cause side-effects
+    componenetDidUpdate():
+        Do: Cause side-effects
+        Don't: Update State (triggers re-render)
+
+
 

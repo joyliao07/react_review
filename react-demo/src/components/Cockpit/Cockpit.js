@@ -12,8 +12,6 @@ const cockpit = (props) => {
       assignedClasses.push(CockpitCss.bold);
     }
 
-
-
     return (
         <div className={CockpitCss.Cockpit}>
             <h1 className={assignedClasses.join(' ')}> {props.title} </h1>
