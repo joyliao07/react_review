@@ -106,5 +106,10 @@ Component Lifecycle:
         Do: Cause side-effects
         Don't: Update State (triggers re-render)
 
+To Make HTTP Request In A Functional Componenet:
 
+    Use <useEffect> hook!! It combines componentDidMount() and componenetDidUpdate()
 
+React.memo():
+
+    When exporting a functional component, if you wrap the component inside <React.memo()>, React will rerender ONLY if the component has been changed or updated. This will help you to optimize the performance.
