@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import React, { useState} from 'react';
 import AppCss from '../containers/App.css';
 import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 import Person from '../components/Persons/Person/Person';
 import { PassThrough } from 'stream';
 import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
@@ -36,7 +37,6 @@ class App extends Component {
   } 
 
   togglePersonHandler = () => {
-    // console.log('showPersons: ', this.state.showPersons);
     this.setState({
       showPersons: !this.state.showPersons,
     })
@@ -57,31 +57,18 @@ class App extends Component {
     
     if (this.state.showPersons) {
       persons = (
-        <div>
           <Persons
           clicked = {this.deletePersonHandler}
           changed = {this.changeNameHandler}
           persons = {this.state.persons}/>
-        </div>
       );
-    }
-
-    let assignedClasses = [];
-
-    if (this.state.persons.length <= 1) {
-      assignedClasses.push(AppCss.red);
-    }
-    if (this.state.persons.length === 0) {
-      assignedClasses.push(AppCss.bold);
     }
 
     return (
       <div className={AppCss.App}>
-        <h1 className={assignedClasses.join(' ')}>React app testing</h1>
-        <button 
-          onClick={() => this.togglePersonHandler()}
-          className={AppCss.Button}>Show/Hide</button>
-
+        <Cockpit
+        persons = {this.state.persons}
+        clicked = {this.togglePersonHandler}/>
         {persons}
       </div>
     );
