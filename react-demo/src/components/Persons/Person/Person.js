@@ -1,25 +1,26 @@
 import React, {Component, Fragment} from 'react';
 import PersonCss from "./Person.css";
-// import App from '../App';
 import App from '../../../containers/App';
 import Aux from '../../../hoc/Aux';
+import withClass from '../../../hoc/withClass';
 
 // const person = (props) => {
 class Person extends Component {
     render () {
         return (
-            <div className={PersonCss.Person}>
+            <Aux>
+            {/* <div> */}
             {/* // <Fragment className={PersonCss.Person}> */}
-            {/* // <Aux> */}
                 <p>Here is {this.props.name} who likes to {this.props.hobby}.</p>
                 <p>{this.props.children}</p>
                 <input type="text" placeholder="Type a name" onChange={this.props.changed}></input> 
                 <button onClick={this.props.click} className={PersonCss.Button}>Remove</button>
-            {/* </Aux> */}
             {/* </Fragment> */}
-            </div>
+            {/* </div> */}
+            </Aux>
         );
     }
 }
 
-export default Person;
+// export default Person;
+export default withClass(Person, PersonCss.Person);

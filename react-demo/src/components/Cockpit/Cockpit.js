@@ -42,7 +42,6 @@ const cockpit = (props) => {
 
     return (
         <div className={CockpitCss.Cockpit}>
-            <h1>Person Manager</h1>
             <h1 className={assignedClasses.join(' ')}> {props.title} </h1>
             <button 
             onClick={props.clicked}
