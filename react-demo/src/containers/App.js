@@ -4,6 +4,8 @@ import AppCss from '../containers/App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 import Person from '../components/Persons/Person/Person';
+import withClass from '../hoc/withClass';
+import Aux from '../hoc/Aux';
 import { PassThrough } from 'stream';
 import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
 
@@ -88,16 +90,21 @@ class App extends Component {
     }
 
     return (
-      <div className={AppCss.App}>
+      <Aux>
+      {/* <div className={AppCss.App}> */}
+      {/* <WithClass classes={AppCss.App}> */}
         <Cockpit
         personsLength = {this.state.persons.length}
         clicked = {this.togglePersonHandler}
         title = {this.props.appTitle}/>
         {persons}
-      </div>
+        {/* </WithClass> */}
+        {/* </div> */}
+      </Aux>
     );
     // return React.createElement('div', {className: 'app'}, React.createElement('h1', null, 'I\'m using an alternative render method.'), React.createElement('p', null, 'second element here.'));
   }
 }
 
-export default App;
+// export default App;
+export default withClass(App, AppCss.App);

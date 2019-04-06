@@ -18,8 +18,6 @@ class Persons extends Component {
     }
   }
 
-
-
   render () {
     return this.props.persons.map( (person, index) => {
           return <ErrorBoundary key={person.id}>
