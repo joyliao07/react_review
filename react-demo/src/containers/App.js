@@ -4,6 +4,7 @@ import AppCss from '../containers/App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 import Person from '../components/Persons/Person/Person';
+import WithClass from '../hoc/WithClass';
 import { PassThrough } from 'stream';
 import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
 
@@ -88,13 +89,15 @@ class App extends Component {
     }
 
     return (
-      <div className={AppCss.App}>
+      <WithClass classes={AppCss.App}>
+      {/* <div className={AppCss.App}> */}
         <Cockpit
         personsLength = {this.state.persons.length}
         clicked = {this.togglePersonHandler}
         title = {this.props.appTitle}/>
         {persons}
-      </div>
+      {/* </div> */}
+      </WithClass>
     );
     // return React.createElement('div', {className: 'app'}, React.createElement('h1', null, 'I\'m using an alternative render method.'), React.createElement('p', null, 'second element here.'));
   }

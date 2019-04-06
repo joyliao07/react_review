@@ -8,16 +8,16 @@ import Aux from '../../../hoc/Aux';
 class Person extends Component {
     render () {
         return (
-            <Fragment>
+            <div className={PersonCss.Person}>
+            {/* // <Fragment className={PersonCss.Person}> */}
             {/* // <Aux> */}
-            {/* // <div className={PersonCss.Person}> */}
                 <p>Here is {this.props.name} who likes to {this.props.hobby}.</p>
                 <p>{this.props.children}</p>
                 <input type="text" placeholder="Type a name" onChange={this.props.changed}></input> 
                 <button onClick={this.props.click} className={PersonCss.Button}>Remove</button>
-            {/* // </div> */}
             {/* </Aux> */}
-            </Fragment>
+            {/* </Fragment> */}
+            </div>
         );
     }
 }
