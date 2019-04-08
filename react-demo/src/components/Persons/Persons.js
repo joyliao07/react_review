@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import Person from './Person/Person';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
-
 class Persons extends Component {
 
   // componentWillUnmount() {
