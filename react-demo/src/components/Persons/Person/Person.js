@@ -3,6 +3,7 @@ import PersonCss from "./Person.css";
 import App from '../../../containers/App';
 import Aux from '../../../hoc/Aux';
 import withClass from '../../../hoc/withClass';
+import PropTypes from 'prop-types';
 
 // const person = (props) => {
 class Person extends Component {
@@ -21,6 +22,13 @@ class Person extends Component {
         );
     }
 }
+
+Person.propTypes = {
+    click: PropTypes.func,
+    name: PropTypes.string,
+    hobby: PropTypes.string,
+    changed: PropTypes.func,
+};
 
 // export default Person;
 export default withClass(Person, PersonCss.Person);

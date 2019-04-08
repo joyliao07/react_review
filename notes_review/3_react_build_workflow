@@ -113,3 +113,18 @@ To Make HTTP Request In A Functional Componenet:
 React.memo():
 
     When exporting a functional component, if you wrap the component inside <React.memo()>, React will rerender ONLY if the component has been changed or updated. This will help you to optimize the performance.
+
+Using prop-types:
+
+    In the terminal:
+    <npm install --save prop-types>
+
+    In Person.js:
+    <import PropTypes from 'prop-types';>
+
+    Person.propTypes = {
+        click: PropTypes.func,
+        name: PropTypes.string,
+        hobby: PropTypes.string,
+        changed: PropTypes.func,
+    };
