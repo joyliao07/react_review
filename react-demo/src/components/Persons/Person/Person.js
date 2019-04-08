@@ -23,6 +23,7 @@ class Person extends Component {
             <Aux>
             {/* <div> */}
             {/* // <Fragment className={PersonCss.Person}> */}
+                {this.props.isAuth ? <p>Authenticated! </p> : <p>Please login.</p>}
                 <p>Here is {this.props.name} who likes to {this.props.hobby}.</p>
                 <p>{this.props.children}</p>
                 <input 
@@ -31,7 +32,7 @@ class Person extends Component {
                     onChange={this.props.changed}
                     // ref = {(inputEl) => {this.inputElement = inputEl}}
                     ref = {this.inputElementRef}
-                    /> 
+                    />
                 <button onClick={this.props.click} className={PersonCss.Button}>Remove</button>
             {/* </Fragment> */}
             {/* </div> */}

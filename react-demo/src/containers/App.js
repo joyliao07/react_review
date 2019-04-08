@@ -20,6 +20,7 @@ class App extends Component {
         {id: '2', name: 'Huckle', hobby: 'sleep'},
       ],
       showPersons: false,
+      authenticated: false,
     }
   }
 
@@ -59,13 +60,13 @@ class App extends Component {
     this.setState({
       persons: persons
     })
-  } 
+  };
 
   togglePersonHandler = () => {
     this.setState({
       showPersons: !this.state.showPersons,
     })
-  }
+  };
   
   deletePersonHandler = (personIndex) => {
     // const persons = this.state.persons;
@@ -73,8 +74,16 @@ class App extends Component {
     persons.splice(personIndex, 1);
     this.setState({
       persons: persons
-    });
-  }
+    })
+  };
+
+  loginHandler = () => {
+    this.setState({
+      authenticated: true,
+    })
+  };
+
+
 
   render() {
     
@@ -85,7 +94,8 @@ class App extends Component {
           <Persons
           clicked = {this.deletePersonHandler}
           changed = {this.changeNameHandler}
-          persons = {this.state.persons}/>
+          persons = {this.state.persons}
+          isAuthenticated = {this.state.authenticated}/>
       );
     }
 
@@ -96,7 +106,8 @@ class App extends Component {
         <Cockpit
         personsLength = {this.state.persons.length}
         clicked = {this.togglePersonHandler}
-        title = {this.props.appTitle}/>
+        title = {this.props.appTitle}
+        login = {this.loginHandler}/>
         {persons}
         {/* </WithClass> */}
         {/* </div> */}
