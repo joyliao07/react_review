@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useContext} from 'react';
 import CockpitCss from './Cockpit.css';
 import AuthContext from '../../context/auth-context';
 
@@ -6,7 +6,8 @@ import AuthContext from '../../context/auth-context';
 const cockpit = (props) => {
     
     const toggleBtnRef = useRef(null);
-    
+    // const passContext = useContext(AuthContext);
+
     useEffect(() => {
       // We need to put this command line inside useEffect because useEffect is run after each complete render cycle; so this <toggleBtnRef.current.click();> is run after the entire JSX code has been rendered.
       toggleBtnRef.current.click();
