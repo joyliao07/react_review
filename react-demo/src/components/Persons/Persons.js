@@ -24,7 +24,8 @@ class Persons extends Component {
             name={person.name} 
             hobby={person.hobby}
             click={() => this.props.clicked( index )}
-            changed={(event) => this.props.changed(event, person.id)}>
+            changed={(event) => this.props.changed(event, person.id)}
+            isAuth = {this.props.isAuthenticated}>
             She also likes to dance! </Person>
             </ErrorBoundary>
     });

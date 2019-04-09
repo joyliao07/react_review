@@ -1,9 +1,10 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
+// import React, {Fragment} from 'react';
 import PersonCss from "./Person.css";
-import App from '../../../containers/App';
 import Aux from '../../../hoc/Aux';
 import withClass from '../../../hoc/withClass';
 import PropTypes from 'prop-types';
+import AuthContext from '../../../context/auth-context';
 
 // const person = (props) => {
 class Person extends Component {
@@ -23,6 +24,12 @@ class Person extends Component {
             <Aux>
             {/* <div> */}
             {/* // <Fragment className={PersonCss.Person}> */}
+                <AuthContext.Consumer>
+                    {(context) => 
+                        context.authenticated ? <p>Authenticated! </p> : <p>Please login.</p>
+                    }
+                </AuthContext.Consumer>
+
                 <p>Here is {this.props.name} who likes to {this.props.hobby}.</p>
                 <p>{this.props.children}</p>
                 <input 
@@ -31,7 +38,7 @@ class Person extends Component {
                     onChange={this.props.changed}
                     // ref = {(inputEl) => {this.inputElement = inputEl}}
                     ref = {this.inputElementRef}
-                    /> 
+                    />
                 <button onClick={this.props.click} className={PersonCss.Button}>Remove</button>
             {/* </Fragment> */}
             {/* </div> */}

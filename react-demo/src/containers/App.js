@@ -3,11 +3,10 @@ import React, { Component } from 'react';
 import AppCss from '../containers/App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-import Person from '../components/Persons/Person/Person';
 import withClass from '../hoc/withClass';
 import Aux from '../hoc/Aux';
-import { PassThrough } from 'stream';
-import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
+import AuthContext from '../context/auth-context';
+
 
 class App extends Component {
 // const app = props => {
@@ -20,6 +19,7 @@ class App extends Component {
         {id: '2', name: 'Huckle', hobby: 'sleep'},
       ],
       showPersons: false,
+      authenticated: false,
     }
   }
 
@@ -27,10 +27,6 @@ class App extends Component {
   //   //here you update the state
   //   console.log('getderived', props);
   //   return state;
-  // }
-
-  // componentDidMount(){
-
   // }
 
   // state = {
@@ -59,13 +55,13 @@ class App extends Component {
     this.setState({
       persons: persons
     })
-  } 
+  };
 
   togglePersonHandler = () => {
     this.setState({
       showPersons: !this.state.showPersons,
     })
-  }
+  };
   
   deletePersonHandler = (personIndex) => {
     // const persons = this.state.persons;
@@ -73,8 +69,15 @@ class App extends Component {
     persons.splice(personIndex, 1);
     this.setState({
       persons: persons
-    });
-  }
+    })
+  };
+
+  loginHandler = () => {
+    this.setState({
+      authenticated: true,
+    })
+  };
+
 
   render() {
     
@@ -85,7 +88,8 @@ class App extends Component {
           <Persons
           clicked = {this.deletePersonHandler}
           changed = {this.changeNameHandler}
-          persons = {this.state.persons}/>
+          persons = {this.state.persons}
+          isAuthenticated = {this.state.authenticated}/>
       );
     }
 
@@ -93,6 +97,11 @@ class App extends Component {
       <Aux>
       {/* <div className={AppCss.App}> */}
       {/* <WithClass classes={AppCss.App}> */}
+        <AuthContext.Provider 
+          value={{
+            authenticated: this.state.authenticated, 
+            login: this.loginHandler,
+          }}>
         <Cockpit
         personsLength = {this.state.persons.length}
         clicked = {this.togglePersonHandler}
@@ -100,6 +109,7 @@ class App extends Component {
         {persons}
         {/* </WithClass> */}
         {/* </div> */}
+        </AuthContext.Provider>
       </Aux>
     );
     // return React.createElement('div', {className: 'app'}, React.createElement('h1', null, 'I\'m using an alternative render method.'), React.createElement('p', null, 'second element here.'));
