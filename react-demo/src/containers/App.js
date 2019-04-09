@@ -3,11 +3,10 @@ import React, { Component } from 'react';
 import AppCss from '../containers/App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-import Person from '../components/Persons/Person/Person';
 import withClass from '../hoc/withClass';
 import Aux from '../hoc/Aux';
-import { PassThrough } from 'stream';
-import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
+import AuthContext from '../context/auth-context';
+
 
 class App extends Component {
 // const app = props => {
@@ -28,10 +27,6 @@ class App extends Component {
   //   //here you update the state
   //   console.log('getderived', props);
   //   return state;
-  // }
-
-  // componentDidMount(){
-
   // }
 
   // state = {
@@ -84,7 +79,6 @@ class App extends Component {
   };
 
 
-
   render() {
     
     let persons = null;
@@ -103,14 +97,19 @@ class App extends Component {
       <Aux>
       {/* <div className={AppCss.App}> */}
       {/* <WithClass classes={AppCss.App}> */}
+        <AuthContext.Provider 
+          value={{
+            authenticated: this.state.authenticated, 
+            login: this.loginHandler,
+          }}>
         <Cockpit
         personsLength = {this.state.persons.length}
         clicked = {this.togglePersonHandler}
-        title = {this.props.appTitle}
-        login = {this.loginHandler}/>
+        title = {this.props.appTitle}/>
         {persons}
         {/* </WithClass> */}
         {/* </div> */}
+        </AuthContext.Provider>
       </Aux>
     );
     // return React.createElement('div', {className: 'app'}, React.createElement('h1', null, 'I\'m using an alternative render method.'), React.createElement('p', null, 'second element here.'));
