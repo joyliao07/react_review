@@ -60,11 +60,10 @@ Radium:
 CSS Modules:
     To use CSS modules, we actually need to tweak the built configuration of our project. <react-script> is the package that exposes the whole built workflow to us. We should never manually add and remove components from node_modules, because everytime we run <npm install>, the changes will be overwritten.
     
-    Run <npm run eject> to unlock CSS modules.
-
-    <git add .>
-    <git commit -m "all changes need to be committed before running npm eject">
-    <npm run eject> When you run this commnad, it gives you access to all config files.
+    To unlock CSS modules:
+        <git add .>
+        <git commit -m "all changes need to be committed before running npm eject">
+        <npm run eject> When you run this commnad, it gives you access to all config files.
     
     Modify the setting of <test: cssRegex> in file <webpack.config.js>
 
