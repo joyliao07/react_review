@@ -49,6 +49,9 @@ Stateful vs Stateless:
 
     A file such as <person.js> is a stateless component because it has no internal state management. As a result, they are called "dumb" or "presentational components". It is the preferred way of building components.
 
+    <components> folder contains components that are stateless.
+    <containers> folder contains components that are stateful.
+
 Radium:
     <npm install --save radium>
     Radium is a React package that allows us to use inline styling with sudo-selectors and media queries.
