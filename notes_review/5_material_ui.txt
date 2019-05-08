@@ -1,0 +1,63 @@
+const {
+  Table,
+  TableHeader,
+  TableHeaderColumn,
+  TableBody,
+  TableRow,
+  TableRowColumn,
+  MuiThemeProvider,
+  getMuiTheme,
+} = MaterialUI;
+
+ class Example extends React.Component {
+  render() {
+    const customColumnStyle = { width: 12, backgroundColor: 'yellow' };
+    
+    return (
+      <div>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHeaderColumn>A</TableHeaderColumn>
+              <TableHeaderColumn style={customColumnStyle}>B</TableHeaderColumn>
+              <TableHeaderColumn>C</TableHeaderColumn>
+            </TableRow>            
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableRowColumn>1</TableRowColumn>
+              <TableRowColumn style={customColumnStyle}>2</TableRowColumn>
+              <TableRowColumn>3</TableRowColumn>
+            </TableRow>
+            <TableRow>
+              <TableRowColumn>4</TableRowColumn>
+              <TableRowColumn style={customColumnStyle}>5</TableRowColumn>
+              <TableRowColumn>6</TableRowColumn>
+            </TableRow>
+            <TableRow>
+              <TableRowColumn>7</TableRowColumn>
+              <TableRowColumn style={customColumnStyle}>8</TableRowColumn>
+              <TableRowColumn>9</TableRowColumn>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </div>
+    );
+  }
+
+}
+
+const App = () => (
+  <MuiThemeProvider muiTheme={getMuiTheme()}>
+    <Example />
+  </MuiThemeProvider>
+);
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('container')
+);
+
+...
+
+Online example of setting flexbox grid with material UI library
