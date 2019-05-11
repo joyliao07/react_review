@@ -27,8 +27,8 @@ class BurgerBuilder extends Component{
         purchaseable: false,
     }
 
-    updatePurchaseState () {
-        const ingredients = {... this.state.ingredients};
+    updatePurchaseState (ingredients) {
+        // const ingredients = {... ingredients};
         const sum = Object.keys(ingredients)
             .map( key => {
                 return ingredients[key];
@@ -37,7 +37,6 @@ class BurgerBuilder extends Component{
                 return sum + element;
             }, 0);
         this.setState({purchaseable: sum > 0});
-        console.log('updatePurchaseState is called.')
     }
 
 
@@ -52,6 +51,8 @@ class BurgerBuilder extends Component{
         const newPrice = oldPrice + priceAddition;
 
         this.setState({totalPrice: newPrice, ingredients: updatedIngredients});
+
+        this.updatePurchaseState(updatedIngredients);
     }
     
     removeIngredientHandler = (type) => {
@@ -64,17 +65,19 @@ class BurgerBuilder extends Component{
             const oldPrice = this.state.totalPrice;
             const newPrice = oldPrice - priceDeduction;
             this.setState({totalPrice: newPrice, ingredients: updatedIngredients});
+            this.updatePurchaseState(updatedIngredients);
         } else {
             return
         }
     }
-
+    
     orderValidationHandler = () => {    
         if (this.state.totalPrice > 4) {
-            console.log('to set purchaseable state to true.')
+            console.log('to set purchaseable state to true.');
             this.setState({purchaseable: true});
+            console.log('purchaesable state: ', this.state.purchaseable);
         } else {
-            console.log('to set purchaseable state to false.')
+            console.log('to set purchaseable state to false.');
             this.setState({purchaseable: false});
         }
 
