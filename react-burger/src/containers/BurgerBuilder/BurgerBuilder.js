@@ -24,7 +24,21 @@ class BurgerBuilder extends Component{
             meat: 0,
         },
         totalPrice: 4,
+        purchaseable: false,
     }
+
+    updatePurchaseState (ingredients) {
+        // const ingredients = {... ingredients};
+        const sum = Object.keys(ingredients)
+            .map( key => {
+                return ingredients[key];
+            })
+            .reduce((sum, element) => {
+                return sum + element;
+            }, 0);
+        this.setState({purchaseable: sum > 0});
+    }
+
 
     addIngredientHandler = (type) => {
         const oldCount = this.state.ingredients[type];
@@ -37,6 +51,8 @@ class BurgerBuilder extends Component{
         const newPrice = oldPrice + priceAddition;
 
         this.setState({totalPrice: newPrice, ingredients: updatedIngredients});
+
+        this.updatePurchaseState(updatedIngredients);
     }
     
     removeIngredientHandler = (type) => {
@@ -49,8 +65,28 @@ class BurgerBuilder extends Component{
             const oldPrice = this.state.totalPrice;
             const newPrice = oldPrice - priceDeduction;
             this.setState({totalPrice: newPrice, ingredients: updatedIngredients});
+            this.updatePurchaseState(updatedIngredients);
         } else {
             return
+        }
+    }
+    
+    orderValidationHandler = () => {    
+        if (this.state.totalPrice > 4) {
+            console.log('to set purchaseable state to true.');
+            this.setState({purchaseable: true});
+            console.log('purchaesable state: ', this.state.purchaseable);
+        } else {
+            console.log('to set purchaseable state to false.');
+            this.setState({purchaseable: false});
+        }
+
+        if (this.state.purchaseable === false) {
+            // ask the customer to buy something
+            console.log('purchaesable state: ', this.state.purchaseable)
+            return
+        } else {
+            console.log('purchaesable state: ', this.state.purchaseable)
         }
     }
 
@@ -62,6 +98,8 @@ class BurgerBuilder extends Component{
                     ingredientAdded={ this.addIngredientHandler }
                     ingredientRemoved={ this.removeIngredientHandler}
                     totalPrice={ this.state.totalPrice }
+                    orderButton={ this.orderValidationHandler }
+                    purchaseable={ this.state.purchaseable }
                 />
             </Aux>
         );
