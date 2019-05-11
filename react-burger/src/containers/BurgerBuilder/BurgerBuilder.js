@@ -24,6 +24,7 @@ class BurgerBuilder extends Component{
             meat: 0,
         },
         totalPrice: 4,
+        purchaseable: false,
     }
 
     addIngredientHandler = (type) => {
@@ -54,6 +55,22 @@ class BurgerBuilder extends Component{
         }
     }
 
+    orderValidationHandler = () => {
+        if (this.state.totalPrice > 4) {
+            this.setState({purchaseable: true});
+        } else {
+            this.setState({purchaseable: false});
+        }
+        
+        if (this.state.purchaseable === false) {
+            // ask the customer to buy something
+            console.log('you need to order something')
+            return
+        } else {
+            console.log('ready to checkout')
+        }
+    }
+
     render(){
         return (
             <Aux>
@@ -62,6 +79,7 @@ class BurgerBuilder extends Component{
                     ingredientAdded={ this.addIngredientHandler }
                     ingredientRemoved={ this.removeIngredientHandler}
                     totalPrice={ this.state.totalPrice }
+                    orderButton={ this.orderValidationHandler }
                 />
             </Aux>
         );
