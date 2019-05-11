@@ -42,12 +42,17 @@ console.log('origin input is: ', obj.apple);
 // obj.apple = {red: 1, gold: 3}
 
 
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::  Call State Key By A Variable  ::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
+const obj = {
+    apple: {red: 1, gold: 2},
+};
 
+let to_update = 'gold';
 
-
-
-
+obj.apple[to_update] = 3;
 
 
