@@ -1,0 +1,53 @@
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::  To Update Without Mutating  :::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+const obj = {
+    apple: {red: 1, gold: 2},
+};
+
+let arrNew = {...obj.apple};
+
+
+arrNew.gold = 3;
+
+
+console.log('arrNew is: ', arrNew);
+// arrNew = {red: 1, gold: 3}
+
+console.log('origin input is: ', obj.apple);
+// obj.apple = {red: 1, gold: 2}
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::  Will Mutate The Original  :::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+const obj = {
+    apple: {red: 1, gold: 2},
+};
+
+let arrNew = obj.apple;
+
+
+arrNew.gold = 3;
+
+
+console.log('arrNew is: ', arrNew);
+// arrNew = {red: 1, gold: 3}
+
+console.log('origin input is: ', obj.apple);
+// obj.apple = {red: 1, gold: 3}
+
+
+
+
+
+
+
+
+
+
+
