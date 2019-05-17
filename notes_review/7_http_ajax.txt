@@ -1,0 +1,33 @@
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::  HTTP/AJAX IN REACT  ::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+import axios from 'axios';
+
+class NewClass extends Component {
+    state = {
+        posts: []
+    }
+
+    componentDidMount () {
+        axios.get('your_url_address')
+            .then(response => {
+                this.setState({posts: response.data});
+            });
+    }
+
+    render () {
+        let posts = this.state.posts.map( post => {
+            return <POST
+                key={post.id} 
+                title={post.title} 
+                />;
+        });
+
+        return (
+            <div>
+                <POST/>
+            </div>
+        );
+    }
+}
