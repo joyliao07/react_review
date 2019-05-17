@@ -21,7 +21,7 @@ const layout = (props) => {
             //     ABC
             // </div>
             <Aux>
-                <ToolBar/>
+                <ToolBar drawerToggle={props.drawerToggle}/>
                 <SideDrawer 
                     open={props.open} 
                     closed={props.closed}
