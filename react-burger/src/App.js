@@ -4,11 +4,17 @@ import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 
 class App extends Component {
     state = {
-      showSideDrawer: true,
+      showSideDrawer: false,
     }
 
     sideDrawerClosedHandler = () => {
       this.setState({showSideDrawer: false});
+    }
+
+    drawerToggleHandler = () => {
+      this.setState((prevState) => {
+        return { showSideDrawer: !prevState.showSideDrawer };
+      });
     }
 
   render() {
@@ -16,7 +22,8 @@ class App extends Component {
       <div>
         <Layout 
           open={this.state.showSideDrawer}
-          closed={this.sideDrawerClosedHandler}>
+          closed={this.sideDrawerClosedHandler}
+          drawerToggle={this.drawerToggleHandler}>
           <BurgerBuilder/>
         </Layout>
       </div>
