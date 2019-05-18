@@ -40,12 +40,12 @@ class NewClass extends Component {
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::::::::::  EVENT LISTENER ::::::::::::
+::::::::::  UPDATE FULL-POST WITH SELECTED-ID :::::::::::
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ...
 
-class NewClass extends Component {
+class Main extends Component {
     state = {
         posts: [],
         slectedPostID: null,
@@ -119,22 +119,36 @@ class FullPost extends Component {
 }
 
 
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::  UPDATE BACKEND WITH POST METHOD :::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
+...
 
+class NewPost extends Component {
+    state = {
+        title: '',
+        content: '',
+    }
 
+    postDataHandler = () => {
+        const data = {
+            title: this.state.title,
+            body: this.state.content,
+        };
+        axios.post('your_url_address', data);
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
+    render () {
+        return (
+            <div className={classes.NewPost}>
+                <h1> Add A Title </h1>
+                <p> Add Content </p>
+                <button onClick={this.postDataHandler}>Add Post</button>
+            </div>
+        );
+    }
+}
 
 
