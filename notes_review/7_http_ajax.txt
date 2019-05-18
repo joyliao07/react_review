@@ -159,3 +159,51 @@ class NewPost extends Component {
 }
 
 
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::  IMPLEMENT INTERCEPTORS :::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+<index.js>
+
+import React from 'react';
+import ReactDOM from 'ract-dom';
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
+import axios from 'axios';
+
+axios.interceptors.request.use( request => {
+    console.log(request);
+    // You can edit the request config here
+    return request;
+}, error => {
+    console.log(error);
+    return Promise.reject(error);
+});
+
+ReactDOM.render( <App/>, document.getElementByID('root'));
+registerServiceWorker();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
