@@ -1,0 +1,111 @@
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::  HTTP/AJAX IN REACT  ::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::  UPDATE STATE WITH HTTP RESPONSE  ::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+import axios from 'axios';
+
+class NewClass extends Component {
+    state = {
+        posts: [],
+    }
+
+    componentDidMount () {
+        axios.get('your_url_address')
+            .then(response => {
+                this.setState({posts: response.data});
+            });
+    }
+
+    render () {
+        let posts = this.state.posts.map( post => {
+            return <POST
+                key={post.id} 
+                title={post.title} 
+                />;
+        });
+
+        return (
+            <div>
+                {posts}
+            </div>
+        );
+    }
+}
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::  EVENT LISTENER ::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+class NewClass extends Component {
+    state = {
+        posts: [],
+        slectedPostID: null,
+    }
+
+    componentDidMount () {
+        axios.get('your_url_address')
+            .then(response => {
+                this.setState({posts: response.data});
+            });
+    }
+
+    postSelectedHandler = (id) => {
+        this.setState({slectedPostID: id});
+    }
+
+    render () {
+        let posts = this.state.posts.map( post => {
+            return <POST
+                key={post.id} 
+                title={post.title}
+                clicked={() => this.postSelectedHandler(post.id) }
+                />;
+        });
+
+        return (
+            <div>
+                <section>
+                    <POST/>
+                </section>
+                <section>
+                    <FullPost id={this.state.slectedPostID}/>
+                </section>
+                <section>
+                    <NewPost/>
+                </section>
+            </div>
+        );
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
