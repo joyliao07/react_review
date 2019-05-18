@@ -43,17 +43,12 @@ class NewClass extends Component {
 ::::::::::  EVENT LISTENER ::::::::::::
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+...
+
 class NewClass extends Component {
     state = {
         posts: [],
         slectedPostID: null,
-    }
-
-    componentDidMount () {
-        axios.get('your_url_address')
-            .then(response => {
-                this.setState({posts: response.data});
-            });
     }
 
     postSelectedHandler = (id) => {
@@ -86,8 +81,42 @@ class NewClass extends Component {
 }
 
 
+...
+import axios from 'axios';
 
+class FullPost extends Component {
+    state = {loadedPost: null, };
 
+    componentDidUpdate() {
+        if (this.props.id) {
+            if (! this.state.loadedPost || this.state.loadedPost && this.state.loadedPost.id !== this.props.id) {
+                axios.get('your_url_address/posts/' + this.props.id)
+                    .then( response => {
+                        this.setState({ loadedPost: response.data });
+                    });
+            }
+        }
+    }
+
+    render () {
+        let post = <p> Please select a post! </p>;
+
+        if (this.post.id) {
+            post = <p> Loading.. </p>;
+        }
+
+        // the condition needs to be set on loadedPost instead of post.id because React uses asynchronous rendering, and loadedPost is updated after post.id
+
+        if (this.state.loadedPost) {
+            post = (
+                <div className={classes.FullPost}>
+                    <h1> {this.state.loadedPost.title} </h1>
+                    <p> {this.state.loadedPost.content} </p>
+                </div>
+            );
+        }
+    }
+}
 
 
 
