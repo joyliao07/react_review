@@ -137,7 +137,14 @@ class NewPost extends Component {
             title: this.state.title,
             body: this.state.content,
         };
-        axios.post('your_url_address', data);
+        axios.post('your_url_address', data)
+            .then( response => {
+                console.log('postData updated successfully.')
+            })
+            .catch( error => {
+                console.log(error);
+            });
+
     }
 
     render () {
