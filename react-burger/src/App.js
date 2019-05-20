@@ -7,6 +7,12 @@ class App extends Component {
       showSideDrawer: false,
     }
 
+    // componentDidMount () {
+    //   setTimeout(() => {
+    //     this.setState({show: false});
+    //   }, 5000);
+    // }
+
     sideDrawerClosedHandler = () => {
       this.setState({showSideDrawer: false});
     }
