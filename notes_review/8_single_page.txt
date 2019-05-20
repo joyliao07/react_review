@@ -83,7 +83,7 @@ In <Blog.js> Render Component:
 ::::::::  AVOID CONSTANT RELOADING OF THE PAGE  :::::::::
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-We need to only re-render part of the page, instead of having to reloading the entire page all the time.
+We need to only re-render part of the page, instead of having to reloading the entire page all the time. When you reload the page, you can loose the state.
 
 In <Blog.js> Render Component:
 
