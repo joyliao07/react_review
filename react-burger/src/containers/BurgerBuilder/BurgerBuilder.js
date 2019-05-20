@@ -35,16 +35,17 @@ class BurgerBuilder extends Component{
         purchaseable: false,
         purchasing: false,
         loading: false,
+        error: false,
     }
 
     componentDidMount () {
         axios.get('https://react-burger-3dda5.firebaseio.com/input.json')
             .then(response => {
-                console.log(response.data.order1.ingredients);
                 this.setState({ingredients: response.data.order1.ingredients});
             })
-
-
+            .catch(error => {
+                this.setState({error: true});
+            });
     }
 
     updatePurchaseState (ingredients) {
@@ -145,7 +146,7 @@ class BurgerBuilder extends Component{
             orderSummary = <Spinner />
         }
 
-        let burger = <Spinner />;
+        let burger = this.state.error? <p>Ingredients cannot be loaded.</p> : <Spinner />;
         
         if (this.state.ingredients) {
             burger = (
