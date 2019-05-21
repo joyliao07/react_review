@@ -14,7 +14,6 @@ class ContactData extends Component {
 
     
     render () {
-        console.log('contactData.');
         return(
             <div className={classes.ContactData}>
                 <h4>Enter your contact data: </h4>
