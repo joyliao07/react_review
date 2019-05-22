@@ -14,15 +14,14 @@ class ContactData extends Component {
 
     
     render () {
-        console.log('contactData.');
         return(
             <div className={classes.ContactData}>
                 <h4>Enter your contact data: </h4>
                 <form>
-                    <input type="text" name="name" placeholder="Your Name"/>
-                    <input type="text" name="email" placeholder="Your Email"/>
-                    <input type="text" name="street" placeholder="Street Address"/>
-                    <input type="text" name="postal" placeholder="Postal Code"/>
+                    <input className={classes.Input} type="text" name="name" placeholder="Your Name"/>
+                    <input className={classes.Input} type="text" name="email" placeholder="Your Email"/>
+                    <input className={classes.Input} type="text" name="street" placeholder="Street Address"/>
+                    <input className={classes.Input} type="text" name="postal" placeholder="Postal Code"/>
                     <Button btnType="Success"> ORDER </Button>
                 </form>
             </div>
